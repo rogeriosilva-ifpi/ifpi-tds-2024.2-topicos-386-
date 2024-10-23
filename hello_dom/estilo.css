@@ -1,0 +1,34 @@
+/* 
+seletor e dentro as propriedades
+seletores:
+- Elementos
+- ID (#)
+- Class (.)
+ */
+
+ body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: darkcyan;
+  color: white;
+ }
+
+ h1 {
+  color: aquamarine;
+ }
+
+ .botao {
+  background-color: crimson;
+  color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 1px;
+  padding-bottom: 2px;
+  text-decoration: none;
+
+  border-radius: 8px;
+ }
+
+ .botao:hover{
+  /* font-weight: 600; */
+  cursor: pointer;
+ }
