@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Veículos</title>
+  <script defer src="comportamento.js"></script>
+</head>
+<body>
+  <header>
+    <h1>App Veículos</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Formulário de Cadastro</h1>
+      <form id="form-veiculo">
+        <div>
+          <label for="nome">Nome:</label>
+          <input id="nome" placeholder="Digite o nome"/>
+        </div>
+        <div>
+          <label for="ano_modelo">Ano/Modelo:</label>
+          <input id="ano_modelo" placeholder="9999/9999"/>
+        </div>
+        <div>
+          <label for="cor">Cor:</label>
+          <input id="cor" placeholder="Digite a cor..." />
+        </div>
+        <div>
+          <label for="km">Km:</label>
+          <input id="km" placeholder="Ano" />
+        </div>
+        <div>
+          <label for="valor">Valor: </label>
+          <input id="valor" type="number" />
+        </div>
+        <div>
+          <input type="reset" value="Cancelar" />
+          <input id="btn-cadastrar" type="button" value="Cadastrar" />
+        </div>
+      </form>
+    </section>
+    <section>
+      <h2>Lista de Veículos Cadastrados</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Ano/Modelo</th>
+            <th>Cor</th>
+            <th>Km</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody id="lista-veiculos">
+
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+
+  </footer>
+</body>
+</html>
