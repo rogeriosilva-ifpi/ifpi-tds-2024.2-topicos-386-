@@ -1,0 +1,44 @@
+{
+  "veiculos": [
+    {
+      "id": "1",
+      "nome": "Pálio",
+      "ano": 2012,
+      "km": 207,
+      "cor": "Prata",
+      "valor": 32.83
+    },
+    {
+      "id": "4050",
+      "nome": "Dolphin",
+      "cor": "Pérola",
+      "km": 0,
+      "valor": 149,
+      "ano": 2024
+    },
+    {
+      "id": "bf41",
+      "nome": "Tan",
+      "cor": "Preto",
+      "km": 70000,
+      "valor": 450000,
+      "ano": 2022
+    },
+    {
+      "id": "4d8a",
+      "nome": "UP",
+      "ano": "2010",
+      "cor": "Preto",
+      "km": "200000",
+      "valor": "22000"
+    },
+    {
+      "id": "ca73",
+      "nome": "Civic",
+      "ano": "2005",
+      "cor": "Prata",
+      "km": "200000",
+      "valor": "33000"
+    }
+  ]
+}

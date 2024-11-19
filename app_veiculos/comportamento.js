@@ -1,41 +1,23 @@
 let proxima_ordem = 4
 
-const veiculos = [
-  {
-    ordem: 1,
-    nome: 'Gol Bola',
-    cor: 'Prata',
-    ano: 2006,
-    km: 70.000,
-    valor: 35.780
-  },
-  {
-    ordem: 2,
-    nome: 'Pálio',
-    cor: 'Branco',
-    ano: 2004,
-    km: 50.000,
-    valor: 25.780
-  },
-  {
-    ordem: 3,
-    nome: 'Creta',
-    cor: 'Cor de BMW',
-    ano: 2025,
-    km: 0.000,
-    valor: 125.780
-  }
-]
+let veiculos = []
 
 function main(){
+  // Buscar os dados na API
   atualizar_tabela()
-
   const btn_cadastrar = document.getElementById('btn-cadastrar')
-
   btn_cadastrar.addEventListener('click', handlerCadastrar)
 }
 
-function atualizar_tabela(){
+async function atualizar_tabela(){
+  try{
+    const response = await fetch('http://localhost:3000/veiculos')
+    veiculos = await response.json()
+  }catch(error){
+    alert('Sistemas Indisponível - Tente mais tarde!')
+    return
+  }
+  
   // Atualizar a tabela HTML com os veículos da lista
   const tabela = document.getElementById('lista-veiculos')
   tabela.innerHTML = ''
@@ -51,7 +33,7 @@ function criar_linha_tabela(veiculo){
   // criar um TR com seus TDs
     const linha = document.createElement('tr')
 
-    const cell_ordem = criar_celula(veiculo.ordem)
+    const cell_ordem = criar_celula(veiculo.id)
     const cell_nome = criar_celula(veiculo.nome)
     const cell_ano = criar_celula(veiculo.ano)
     const cell_cor = criar_celula(veiculo.cor)
@@ -77,7 +59,7 @@ function criar_celula(valor){
 
 
 
-function handlerCadastrar(){
+async function handlerCadastrar(){
   
   // console.log('Clicou em cadastrar')
   const nome = get_value_from_input('nome')
@@ -86,15 +68,31 @@ function handlerCadastrar(){
   const km = get_value_from_input('km')
   const valor = get_value_from_input('valor')
 
-  const veiculo = {ordem: proxima_ordem++, nome, ano, cor, km, valor}
+  const veiculo = {nome, ano, cor, km, valor}
 
-  veiculos.push(veiculo) // append
+  // veiculos.push(veiculo) // append
 
-  alert('Veículo cadastrado!')
+  // Far POST para APIc
+  const URL = 'http://localhost:3000/veiculos'
+  const config = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(veiculo)
+  }
+
+  const response = await fetch(URL, config)
   
-  limpar_formulario()
-  
+  if (response.status === 201){
+    alert('Veículo cadastrado!')
+    limpar_formulario()
+  }else{
+    alert('Não foi possível cadastrar!')
+  }
+
   atualizar_tabela()
+  
 }
 
 function get_value_from_input(input_id){
@@ -109,4 +107,5 @@ function limpar_formulario(){
   form_veiculo.reset() // apaga cada um dos inputs dentro do formulários
 }
 
+// Executando a função "main"
 main()
